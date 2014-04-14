@@ -1,10 +1,138 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      setVideoHeight();
+      $(window).resize(setVideoHeight);
+
+      $("#main-nav li").click(function(){
+        var linkId = $(this)[0].id;
+        var pageId = "#" + linkId.substring(0, linkId.length - 5);
+        var page = $("body").find(pageId);
+
+        $(".page").fadeOut(1200);
+        page.fadeIn(1200);
+
+        if (pageId === "#home") {
+          setVideoHeight();
+        }
+      });
+
+      $("#songs li").click(function(){
+        $(this).siblings().fadeTo(600, .5);
+        $(this).fadeTo(600, 1);
+
+        var tabId = $(this)[0].id;
+        var lyricsId = "#" + tabId.substring(0, tabId.length - 4);
+        var lyrics = $("body").find(lyricsId);
+
+        $(".lyrics").fadeOut(600);
+        lyrics.fadeIn(600);
+      });
+
+      function setVideoHeight() {
+        $("#home-vid").height($("#home-vid").width() * .6);
+      }
+    });
+  </script>
+
   <title>Springwater</title>
 </head>
 
 <body>
+  <nav id="main-nav">
+    <ul>
+      <li id="home-link">SPRINGWATER</li>
+      <li id="about-link">About</li>
+      <li id="music-link">Listen</li>
+  </nav>
 
+  <section id="home" class="page">
+    <div class="content">
+      <iframe src="https://docs.google.com/file/d/0B6OFb-OQYy8gVUNmeTVGZFVKNEk/preview" id="home-vid"></iframe>
+    </div>
+  </section>
+
+  <section id="about" class="page" style="display: none;">
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta varius metus, ut sollicitudin erat interdum at. Donec ac interdum dui, quis fringilla lorem. Sed vulputate volutpat quam ut dictum. Suspendisse lobortis interdum enim sit amet condimentum. Sed tristique urna odio, sed cursus ligula suscipit id. Etiam vulputate scelerisque dolor, eget convallis elit viverra ut. In adipiscing sed neque sit amet sagittis. Praesent sollicitudin quis risus et ornare.</p>
+
+      <p>In iaculis venenatis lacus ut gravida. Praesent imperdiet commodo tempor. Donec id laoreet nisi, nec ultricies enim. Maecenas tincidunt eget nunc et viverra. Nam nec ultricies orci. Donec et tempor lectus, vitae vehicula velit. Vivamus non nisl velit. Nam vitae arcu quis lacus fermentum semper sed eu tortor. Ut urna turpis, tristique eu lobortis a, volutpat sed quam. Nunc dui est, rhoncus sit amet tortor eget, consequat rhoncus est. Praesent lacus odio, elementum tempus volutpat quis, ornare eu augue. Pellentesque vestibulum felis sed sem ullamcorper, et aliquam erat molestie. Cras sit amet hendrerit orci.</p>
+
+      <p>Donec at lacus arcu. Aenean eget metus rhoncus, hendrerit nisi id, fringilla ipsum. Aliquam volutpat, lectus id dapibus pretium, arcu leo commodo libero, vel tincidunt nibh nulla ac dolor. Integer interdum orci hendrerit, volutpat magna a, consectetur ligula. Nam ornare eleifend enim sollicitudin condimentum. Vivamus mauris mi, faucibus eu venenatis sed, convallis at nulla.</p>
+    </div>
+  </section>
+
+  <section id="music" class="page" style="display: none;">
+    <div class="content">
+      <iframe style="border: 0; width: 100%; height: 120px;" src="http://bandcamp.com/EmbeddedPlayer/album=38094698/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://springwater-wi.bandcamp.com/album/winter-ep" id="music-player">Winter EP by Springwater</a></iframe>
+
+      <ul id="songs">
+        <li id="lake-michigan-tab">Lake Michigan</li>
+        <li id="port-city-tab" style="opacity: .5">Port City</li>
+        <li id="blessing-tab" style="opacity: .5">Blessing</li>
+        <li id="winter-lullaby-tab" style="opacity: .5">Winter Lullaby</li>
+      </ul>
+      <div id="lyrics-wrapper">
+        <div id="lake-michigan" class="lyrics">
+          <p>Wait for a few weeks til the August heat rolls by. And turn your direction towards Lake Michigan's clear sky. And take a trip to where the falling leaves make way to evergreens. When that lakeshore opens up you'll see how lovely it can be.</p>
+
+          <p>Know it doesn't matter what you do. You're a flock of geese, you're only passing through. But when you take a little time to get away, know the places they will keep you all the same.</p>
+
+          <p>So drive to Chicago in the summer, in the sun. Sing to empty living rooms and sleep on hardwood floors. Then when in three months time we're on the phone, you'll call this place your home. I'll think of moving boxes at your door and the windy city shore.</p>
+
+          <p>Know it doesn't matter what you do. You're a flock of geese, you're only passing through. But when you take a little time to get away, chose a frosty morning cold and clear or a big bad world with all your fears and your friends will end up back home anyways. But the places they will keep you all the same.</p>
+        </div>
+
+        <div id="port-city" class="lyrics" style="display: none;">
+          <p>From the shores of Superior, to the sands of Michigan. The winds are blowing blind. Like the trees of the forests and the stalks of the fields the song of my mind calls home.</p>
+
+          <p>Father was silent with every shaking breath until they ended with no restart. Mother was weeping with tears down her face. And the song of my heart calls home.</p>
+
+          <p>We stood near the water with chests seizing tight. We took you to rest. With hands held together and knuckles pulled white, we watched you float away.</p>
+
+          <p>On the shores of Superior I can feel you far away like a long lost winter dream. In the fields of our father I can feel you flowing by and the song of your soul calls me home.</p>
+        </div>
+
+        <div id="blessing" class="lyrics" style="display: none;">
+          <p>May your maps take you straight, may your compass ever hold true<br>
+          May your travels lead you far but always bring you home<br>
+          And if the wind falls out of your sails, may your God be there to pick it up again<br>
+          May the weight of the world never sink your little boat</p>
+
+          <p>May you find yourself a house, may you open all the windows<br>
+          May the morning find you early, drinking coffee on your porch<br>
+          And in September, when your family is bigger, may you find the time to walk your kids to school<br>
+          May you take them to the ocean and the city, may you send them to play out in the woods</p>
+
+          <p>And I pray I'm not the only one to bless you on this journey<br>
+          May you take all of these thoughts and fill your heart up to the brim<br>
+          I hope it fills so much it spills<br>
+          So when the day comes that you leave someone,<br>
+          You'll bless them all the same</p>
+
+          <p>When your five foot shoulders lay six feet under, may the people you know, may they all find their peace<br>
+          When the day ends and the shadows lengthen, may they learn to sing your songs and speak your words<br>
+          May they recognize your blessedness, may they know that you have left them just this way</p>
+        </div>
+
+        <div id="winter-lullaby" class="lyrics" style="display: none;">
+          <p>Darlin, oh darlin it's starting to snow, but I promise I'll stay awhile. Darlin, oh darlin, the seasons come and go, like a simple turn of the screw.</p>
+
+          <p>Although outside it's windy and white, although the darkness is long. You can stay in my arms until morning is light. And let this winter lullaby keep you warm.</p>
+
+          <p>Darlin, oh darlin, remember summertime? And the foolish things we did. Darlin, oh darlin we'll stay up all night and imagine the foolish things we'll do.</p>
+
+          <p>And I know outside the cold and wind can burn. it's hard to leave the comfort of the warm. But we'll go outside and be the kids we always were. Let this winter lullaby keep you warm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
