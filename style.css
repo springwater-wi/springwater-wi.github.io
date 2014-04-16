@@ -77,6 +77,26 @@ body {
   background-image: url('about.jpg');
 }
 
+#about .content {
+  background: rgba(255, 255, 255, .3);
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  font-style: italic;
+}
+
+blockquote {
+  margin-top: 0;
+}
+
 #music {
   background-image: url('music.jpg');
 }
